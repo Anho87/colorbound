@@ -6,7 +6,6 @@
   <img src="docs/mage-yellow.png" width="64" />
 </p>
 
-https://colorbound.web.app/
 
 **Colorbound** is a turn-based pixel-art strategy game built with Angular. You control a team of colorful characters with different classes and weapons, battling enemies on a grid-based battlefield using tactical movement and class advantages.
 
