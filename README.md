@@ -28,7 +28,7 @@ The game auto-generates 3-5 enemy characters depending on how hard the player wa
 - Click a player character to **select** them (tile is highlighted)
 - Click another tile to **move**
 - Each character has a `range` 
-- Colors and archetypes have strengths/weaknesses
+- Colors, archetypes and weapons have strengths/weaknesses
 
 
 ---
