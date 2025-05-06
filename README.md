@@ -33,7 +33,7 @@ The game auto-generates 3-5 enemy characters depending on how hard the player wa
 
 ---
 
-## ⚔️ Combat System (Planned)
+## ⚔️ Combat System 
 
 ### 🔄 Color Advantage (reduces incoming damage)
 - Green > Yellow  
