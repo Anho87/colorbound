@@ -1,4 +1,5 @@
-# 🎮 Colorbound <p align="center">
+# 🎮 Colorbound 
+<p align="center">
   <img src="docs/mage-red.png" width="64" />
   <img src="docs/mage-blue.png" width="64" />
   <img src="docs/mage-green.png" width="64" />
