@@ -9,9 +9,10 @@ https://colorbound.web.app/
 ## 🧠 Game Concept
 
 You create 3 player characters by choosing:
-- 🎨 **Color**: (red, green, blue, yellow) — each strong or weak against another
-- 🧙 **Archetype**: mage, warrior, ranger, monk
-- 🗡️ **Weapon**: depends on archetype (e.g. fire, sword, bow, etc.)
+- 🎨 **Color**: (red, green, blue, yellow) — each strong or weak against another.
+- 🧙 **Archetype**: mage, warrior, ranger, monk.
+- 🗡️ **Weapon**: depends on archetype (e.g. fire, sword, bow, etc.).
+- 🗡️ **Biome**: Biome together with the characters color change how much damage the character take.
 
 The game auto-generates 3-5 enemy characters depending on how hard the player want's the game to be.
 
