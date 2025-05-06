@@ -1,27 +1,93 @@
-# Colorbound
+# 🎮 Colorbound
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+https://colorbound.web.app/
 
-## Development server
+**Colorbound** is a turn-based pixel-art strategy game built with Angular. You control a team of colorful characters with different classes and weapons, battling enemies on a grid-based battlefield using tactical movement and class advantages.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🧠 Game Concept
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You create 3 player characters by choosing:
+- 🎨 **Color**: (red, green, blue, yellow) — each strong or weak against another
+- 🧙 **Archetype**: mage, warrior, ranger, monk
+- 🗡️ **Weapon**: depends on archetype (e.g. fire, sword, bow, etc.)
 
-## Build
+The game auto-generates 3-5 enemy characters depending on how hard the player want's the game to be.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🎮 How to Play
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Click a player character to **select** them (tile is highlighted)
+- Click another tile to **move**
+- Each character has a `range` 
+- Colors and archetypes have strengths/weaknesses
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## ⚔️ Combat System (Planned)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 🔄 Color Advantage (reduces incoming damage)
+- Green > Yellow  
+- Yellow > Blue  
+- Blue > Red  
+- Red > Green
+
+### 🧱 Archetype Advantage (boosts damage)
+- **Warrior > Ranger**
+- **Ranger > Monk**
+- **Monk > Mage**
+- **Mage > Warrior**
+
+### 🗡️ Weapon Advantage (per archetype)  (boosts damage)
+
+#### Warrior:
+- Sword > Hammer  
+- Hammer > Axe  
+- Axe > Spear  
+- Spear > Sword
+
+#### Mage:
+- Fire > Earth  
+- Earth > Lightning  
+- Lightning > Water  
+- Water > Fire
+
+#### Ranger:
+- Bow > Crossbow  
+- Crossbow > Throwing Knife  
+- Throwing Knife > Sling  
+- Sling > Bow
+
+#### Monk:
+- Staff > Fists  
+- Fists > Nunchaku  
+- Nunchaku > Sai  
+- Sai > Staff
+
+### 🌍 Biomes  (reduces incoming damage)
+
+Each board has a **biome** that benefits characters depending on their color:
+
+| Biome             | Bonus For |
+|-------------------|-----------|
+| Lava Chamber      | Red       | 
+| Abandoned Temple  | Green     |
+| Crystal Cavern    | Blue      | 
+| Desert Shrine     | Yellow    | 
+
+### 🎯 Mechanics
+
+- ✅ **Weapon advantage** boosts damage
+- ✅ **Archetype advantage** boosts damage
+- ✅ **Color advantage** reduces incoming damage
+- ✅ **Biome match** reduces incoming damage
+
+<p align="center">
+  <img src="docs/mage-red.png" width="64" />
+  <img src="docs/warrior-blue.png" width="64" />
+  <img src="docs/ranger-green.png" width="64" />
+  <img src="docs/monk-yellow.png" width="64" />
+</p>
