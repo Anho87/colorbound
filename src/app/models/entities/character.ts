@@ -1,5 +1,5 @@
-import { Archetype } from "../../enums/archetype.enum";
-import { Color } from "../../enums/color.enum";
+import { Archetype } from "../enums/archetype.enum";
+import { Color } from "../enums/color.enum";
 
 
 export abstract class Character {
@@ -7,7 +7,10 @@ export abstract class Character {
     public name: string,
     public color: Color,
     public weapon: string,
-    public hp: number = 100
+    public hp: number = 100,
+    public position: number = 0,
+    public range: number = 1,
+    public imageUrl: string = '',
   ) {}
 
   abstract archetype: Archetype;

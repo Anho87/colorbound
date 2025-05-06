@@ -1,0 +1,18 @@
+.button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    flex: 1;
+    width: 100%;
+    background-image: url('../../../assets/startscreen.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }

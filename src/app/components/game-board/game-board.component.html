@@ -1,0 +1,12 @@
+<div class="board">
+  <div
+    class="tile"
+    *ngFor="let tile of tiles; let i = index"
+    (click)="onTileClick(i)"
+    [class.selected]="isSelectedTile(i)"
+  >
+    <ng-container *ngFor="let c of getCharactersAt(i)">
+      <img [src]="c.imageUrl" class="sprite" />
+    </ng-container>
+  </div>
+</div>

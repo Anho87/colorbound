@@ -1,0 +1,11 @@
+@if (ifWelcome) {
+<app-welcome (playClicked)="onPlayClicked()"></app-welcome>
+}
+
+@if (ifGameMenu) {
+<app-game-menu (startGame)="onStartGame()"></app-game-menu>
+}
+
+@if (ifGame) {
+<app-game></app-game>
+}

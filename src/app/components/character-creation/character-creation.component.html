@@ -1,0 +1,33 @@
+<div class="create-character">
+  <h2>Create 3 Characters</h2>
+
+  <div *ngFor="let form of characterForms; let i = index" class="character-form">
+    <h3>Character {{ i + 1 }}</h3>
+
+    <label>
+      Color:
+      <select [(ngModel)]="form.color">
+        <option *ngFor="let c of colors" [value]="c">{{ c }}</option>
+      </select>
+    </label>
+
+    <label>
+      Archetype:
+      <select [(ngModel)]="form.archetype" (change)="updateWeapons(i)">
+        <option *ngFor="let a of archetypes" [value]="a">{{ a }}</option>
+      </select>
+    </label>
+
+    <label>
+      Weapon:
+      <select [(ngModel)]="form.weapon">
+        <option *ngFor="let w of form.weapons" [value]="w">{{ w }}</option>
+      </select>
+    </label>
+  </div>
+
+  <button (click)="createAllCharacters()">Create</button>
+  <button (click)="onCloseCharacterCreation()">Close</button>
+</div>
+
+  

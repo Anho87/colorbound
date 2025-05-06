@@ -1,0 +1,28 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(7, 60px);
+    grid-template-rows: repeat(10, 60px);
+    gap: 4px;
+    background: #444;
+    padding: 10px;
+  }
+  
+  .tile {
+    background: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #333;
+    position: relative;
+  }
+  
+  .sprite {
+    width: 100%;
+    max-width: 40px;
+    height: auto;
+  }
+
+  .tile.selected {
+    outline: 3px solid yellow;
+    outline-offset: -3px;
+  }

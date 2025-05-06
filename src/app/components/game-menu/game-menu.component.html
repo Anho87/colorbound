@@ -1,1 +1,15 @@
-<p>game-menu works!</p>
+@if (!ifCreatePlayerCharacter) {
+    <button (click)="generateEnemies(3)">Easy</button>
+    <button (click)="generateEnemies(4)">Medium</button>
+    <button (click)="generateEnemies(5)">Hard</button>
+    <button (click)="generatePlayerCharacters()">Create a character</button>
+    <button (click)="onStartGame()">Start Game</button>
+}
+
+@if(ifCreatePlayerCharacter){
+    <app-character-creation (closeCharacterCreation)="generatePlayerCharacters()"></app-character-creation>
+}
+
+
+
+
