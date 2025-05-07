@@ -17,7 +17,7 @@ You create 3 player characters by choosing:
 - 🎨 **Color**: (red, green, blue, yellow) — each strong or weak against another.
 - 🧙 **Archetype**: mage, warrior, ranger, monk.
 - 🗡️ **Weapon**: depends on archetype (e.g. fire, sword, bow, etc.).
-- 🗡️ **Biome**: Biome together with the characters color change how much damage the character take.
+- 🌲 **Biome**: Biome together with the characters color change how much damage the character take/do.
 
 The game auto-generates 3-5 enemy characters depending on how hard the player want's the game to be.
 
@@ -26,7 +26,7 @@ The game auto-generates 3-5 enemy characters depending on how hard the player wa
 ## 🎮 How to Play
 
 - Click a player character to **select** them (tile is highlighted)
-- Click another tile to **move**
+- Click another tile to **move** or click on an enemy character to **attack** eachother.
 - Each character has a `range` 
 - Colors, archetypes and weapons have strengths/weaknesses
 
@@ -35,7 +35,7 @@ The game auto-generates 3-5 enemy characters depending on how hard the player wa
 
 ## ⚔️ Combat System 
 
-### 🔄 Color Advantage (reduces incoming damage)
+### 🔄 Color Advantage (reduces incoming damage/boosts damage)
 - Green > Yellow  
 - Yellow > Blue  
 - Blue > Red  
@@ -73,7 +73,7 @@ The game auto-generates 3-5 enemy characters depending on how hard the player wa
 - Nunchaku > Sai  
 - Sai > Staff
 
-### 🌍 Biomes  (reduces incoming damage)
+### 🌍 Biomes  (reduces/boosts damage)
 
 Each board has a **biome** that benefits characters depending on their color:
 

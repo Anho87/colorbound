@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { GameMenuComponent } from '../game-menu/game-menu.component';
 import { GameComponent } from '../game/game.component';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-game-shell',
@@ -10,6 +11,7 @@ import { GameComponent } from '../game/game.component';
   styleUrl: './game-shell.component.css',
 })
 export class GameShellComponent {
+  private gameService = inject(GameService);
   ifWelcome: boolean = true;
   ifGameMenu: boolean = false;
   ifGame: boolean = false;
@@ -24,5 +26,6 @@ export class GameShellComponent {
     this.ifWelcome = false;
     this.ifGameMenu = false;
     this.ifGame = true;
+    this.gameService.gameStart();
   }
 }

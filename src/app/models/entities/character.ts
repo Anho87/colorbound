@@ -8,7 +8,7 @@ export abstract class Character {
     public color: Color,
     public weapon: string,
     public hp: number = 100,
-    public position: number = 0,
+    public position: [number, number],
     public range: number = 1,
     public imageUrl: string = '',
   ) {}

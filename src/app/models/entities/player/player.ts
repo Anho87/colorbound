@@ -14,7 +14,7 @@ export class Player extends Character {
     color: Color,
     weapon: string,
     archetype: Archetype,
-    position: number = 0
+    position: [number, number] = [0, 0]
   ) {
     const { range, imageUrl } = Player.getDefaultsFromArchetype(archetype, color);
     super(name, color, weapon, 100, position, range, imageUrl);

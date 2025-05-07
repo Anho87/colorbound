@@ -12,7 +12,7 @@ export class Ranger extends Character {
     color: Color,
     weapon: RangerWeapon,
     hp: number = 100,
-    position: number = 0,
+    position: [number, number] = [0, 0],
     range: number = 2,
     imageUrl: string = ''
   ) {

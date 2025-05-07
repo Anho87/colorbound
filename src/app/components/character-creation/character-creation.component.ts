@@ -66,10 +66,15 @@ export class CharacterCreationComponent {
 
   createAllCharacters() {
     this.gameService.playerCharacters.set([]);
+    const boardWidth = 10;
+    const boardHeight = 10;
+    
     for (let i = 0; i < this.characterForms.length; i++) {
       const form = this.characterForms[i];
       const name = this.createName(form);
-      const position = 69 - i;
+      const x = boardWidth - 1 - i;  
+      const y = boardHeight - 1;     
+      const position: [number, number] = [x, y];
       const newCharacter = new Player(name, form.color, form.weapon, form.archetype, position);
       this.gameService.playerCharacters.update((list) => [...list, newCharacter]);
     }
@@ -77,7 +82,7 @@ export class CharacterCreationComponent {
   }
 
   createName(form: CharacterForm): string {
-    return `${form.color} ${form.archetype} ${this.gameService.playerCharacters().length + 1}`;
+    return `Player ${form.color} ${form.archetype} ${this.gameService.playerCharacters().length + 1}`;
   }
 
   onCloseCharacterCreation(){

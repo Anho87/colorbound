@@ -13,7 +13,7 @@ export class Monk extends Character {
     color: Color,
     weapon: MonkWeapon,
     hp: number = 100,
-    position: number = 0,
+    position: [number, number] = [0, 0],
     range: number = 1,
      imageUrl: string = ''
   ) {

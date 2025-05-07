@@ -1,12 +1,22 @@
-<div class="board">
-  <div
-    class="tile"
-    *ngFor="let tile of tiles; let i = index"
-    (click)="onTileClick(i)"
-    [class.selected]="isSelectedTile(i)"
-  >
-    <ng-container *ngFor="let c of getCharactersAt(i)">
+<div class="game-grid">
+  <div class="info-bar">
+    <h2>Hej</h2>
+  </div>
+
+  <div class="board"
+     [style.gridTemplateColumns]="'repeat(' + boardWidth + ', 50px)'"
+     [style.gridTemplateRows]="'repeat(' + boardHeight + ', 50px)'">
+  
+  <div class="tile"
+       *ngFor="let coord of tiles"
+       (click)="onTileClick(coord)"
+       [class.selected]="isSelectedTile(coord)">
+       
+    <ng-container *ngFor="let c of getCharactersAt(coord)">
       <img [src]="c.imageUrl" class="sprite" />
     </ng-container>
+
   </div>
+</div>
+
 </div>
