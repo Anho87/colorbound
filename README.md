@@ -88,8 +88,8 @@ Each board has a **biome** that benefits characters depending on their color:
 
 - ✅ **Weapon advantage** boosts damage
 - ✅ **Archetype advantage** boosts damage
-- ✅ **Color advantage** reduces incoming damage
-- ✅ **Biome match** reduces incoming damage
+- ✅ **Color advantage** reduces incoming damage/boosts damage
+- ✅ **Biome match** reduces incoming damage/boosts damage
 
 <p align="center">
   <img src="docs/mage-red.png" width="64" />
