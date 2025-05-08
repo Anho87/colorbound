@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { Player } from '../../models/entities/player/player';
 import { Enemy } from '../../models/entities/enemies/enemy';
 import { CombatService } from '../../services/combat.service';
-import { Character } from '../../models/entities/character';
 
 @Component({
   selector: 'app-game-board',
@@ -16,7 +15,8 @@ import { Character } from '../../models/entities/character';
 export class GameBoardComponent implements OnInit {
   private gameService = inject(GameService);
   private combatService = inject(CombatService);
-
+  youWin = computed(() => this.gameService.youWin());
+  youLose = computed(() => this.gameService.youLose());
   boardWidth = this.gameService.boardWidth();
   boardHeight = this.gameService.boardHeight();
   tiles: [number, number][] = [];
@@ -41,7 +41,10 @@ export class GameBoardComponent implements OnInit {
       this.gameService.selectPlayerAtCoord(coord);
     } else if (selectedPlayer && char instanceof Enemy) {
       const enemy = char as Enemy;
-      this.combatService.combat(selectedPlayer, enemy);
+      this.combatService.combat(selectedPlayer, enemy,  this.gameService.biome());
+      this.gameService.clearSelection();
+      this.gameService.removeDead();
+      this.gameService.checkIfGameOver();
     } else if (selectedPlayer) {
       this.gameService.moveSelectedPlayerTo(coord);
     }
@@ -54,4 +57,6 @@ export class GameBoardComponent implements OnInit {
   getCharacterAt(coord: [number, number]) {
     return this.gameService.getCharacterAtCoord(coord);
   }
+
+  
 }

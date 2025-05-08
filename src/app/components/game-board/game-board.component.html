@@ -1,9 +1,15 @@
 <div class="game-grid">
   <div class="info-bar">
-    @if (selectedCharacter) {
-      <h4>HP: {{selectedCharacter.hp}} {{selectedCharacter.name }} {{selectedCharacter.weapon}}</h4>
+    @if (youWin()) {
+      <h1>You win!</h1>
+    }@else if (youLose()) {
+      <h1>You lose!</h1>
     }@else {
-      <h4>HP:</h4>
+      @if (selectedCharacter) {
+        <h4>HP: {{selectedCharacter.hp}} {{selectedCharacter.name }} {{selectedCharacter.weapon}}</h4>
+      }@else {
+        <h4>HP:</h4>
+      }
     }
   </div>
 
