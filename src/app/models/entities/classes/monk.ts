@@ -29,7 +29,7 @@ export class Monk extends Character {
   static getDefaults(color: Color) {
     return {
       range: 1,
-      imageUrl: `assets/sprites/mage-${color.toLowerCase()}.png`,
+      imageUrl: `assets/sprites/monk-${color.toLowerCase()}.png`,
     };
   }
 }

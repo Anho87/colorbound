@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { Enemy } from '../models/entities/enemies/enemy';
 import { Archetype } from '../models/enums/archetype.enum';
 import { Color } from '../models/enums/color.enum';
@@ -27,6 +27,8 @@ export class GameService {
   biome = signal<Biome>(Biome.LavaChamber);
   selectedPlayerIndex = signal<number | null>(null);
   selectedPlayerCord = signal<[number, number]>([0, 0]);
+
+ 
 
   gameStart() {
     this.setBiome();
@@ -60,6 +62,21 @@ export class GameService {
           resolve();
         }
       }, 100);
+    });
+  }
+
+  giveUp(){
+    this.enemyCharacters.set([]);
+    this.playerCharacters.set([]);
+    this.clearSelection();
+    this.youLose.set(false); 
+    this.youWin.set(false);       
+    this.gameOnGoing = false;  
+  }
+
+  passTurn(){
+    this.playerCharacters().forEach(player => {
+      this.playerService.characterMove(player);
     });
   }
 

@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { GameMenuComponent } from '../game-menu/game-menu.component';
-import { GameComponent } from '../game/game.component';
 import { GameService } from '../../services/game.service';
+import { GameBoardComponent } from "../game-board/game-board.component";
 
 @Component({
   selector: 'app-game-shell',
-  imports: [WelcomeComponent, GameMenuComponent, GameComponent],
+  imports: [WelcomeComponent, GameMenuComponent, GameBoardComponent],
   templateUrl: './game-shell.component.html',
   styleUrl: './game-shell.component.css',
 })
@@ -27,5 +27,10 @@ export class GameShellComponent {
     this.ifGameMenu = false;
     this.ifGame = true;
     this.gameService.gameStart();
+  }
+
+  onGiveUp(){
+    this.ifGameMenu = true;
+    this.ifGame = false;
   }
 }

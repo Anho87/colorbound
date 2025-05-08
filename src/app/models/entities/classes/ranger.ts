@@ -29,7 +29,7 @@ export class Ranger extends Character {
   static getDefaults(color: Color) {
     return {
       range: 2,
-      imageUrl: `assets/sprites/mage-${color.toLowerCase()}.png`,
+      imageUrl: `assets/sprites/ranger-${color.toLowerCase()}.png`,
     };
   }
 }

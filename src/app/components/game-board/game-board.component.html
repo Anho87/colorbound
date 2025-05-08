@@ -1,4 +1,9 @@
 <div class="game-grid">
+  <div class="button-bar">
+    <button (click)="giveUp()">Give up</button>
+    <button (click)="passTurn()">Pass turn</button>
+  </div>
+
   <div class="info-bar">
     @if (youWin()) {
       <h1>You win!</h1>

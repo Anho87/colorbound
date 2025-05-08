@@ -28,7 +28,7 @@ export class Warrior extends Character {
   static getDefaults(color: Color) {
     return {
       range: 1,
-      imageUrl: `assets/sprites/mage-${color.toLowerCase()}.png`,
+      imageUrl: `assets/sprites/warrior-${color.toLowerCase()}.png`,
     };
   }
 }

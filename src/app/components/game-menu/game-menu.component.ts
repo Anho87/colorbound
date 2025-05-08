@@ -9,14 +9,15 @@ import { CharacterCreationComponent } from "../character-creation/character-crea
     templateUrl: './game-menu.component.html',
     styleUrl: './game-menu.component.css'
 })
-export class GameMenuComponent {
+export class GameMenuComponent implements OnInit{
     @Output() startGame = new EventEmitter();
     private gameService = inject(GameService);
     ifCreatePlayerCharacter: boolean = false;
    
-   
+   ngOnInit(): void {
+       this.generateEnemies(3);
+   }
     
-
     generatePlayerCharacters(){
         this.ifCreatePlayerCharacter = !this.ifCreatePlayerCharacter;
     }
@@ -27,6 +28,10 @@ export class GameMenuComponent {
     }
 
     onStartGame(){
-        this.startGame.emit();
+        if (this.gameService.playerCharacters().length > 0) {
+            this.startGame.emit();
+        }else{
+            console.log("Have to create your team first.");
+        }
     }
 }

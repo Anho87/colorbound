@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { Player } from '../../models/entities/player/player';
 import { Enemy } from '../../models/entities/enemies/enemy';
 import { CombatService } from '../../services/combat.service';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   selector: 'app-game-board',
@@ -13,6 +14,7 @@ import { CombatService } from '../../services/combat.service';
   styleUrl: './game-board.component.css',
 })
 export class GameBoardComponent implements OnInit {
+  @Output() onGiveUp = new EventEmitter();
   private gameService = inject(GameService);
   private combatService = inject(CombatService);
   youWin = computed(() => this.gameService.youWin());
@@ -58,5 +60,13 @@ export class GameBoardComponent implements OnInit {
     return this.gameService.getCharacterAtCoord(coord);
   }
 
-  
+  passTurn(){
+    this.gameService.passTurn();
+  }
+
+
+  giveUp(){
+    this.gameService.giveUp();
+    this.onGiveUp.emit();
+  }
 }
