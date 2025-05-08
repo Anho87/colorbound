@@ -4,6 +4,7 @@ import { Character } from '../models/entities/character';
 import { Player } from '../models/entities/player/player';
 import { Enemy } from '../models/entities/enemies/enemy';
 import { DamageService } from './damage.service';
+import { PlayerService } from './player.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,16 +12,18 @@ import { DamageService } from './damage.service';
 export class CombatService {
   private gameService = inject(GameService);
   private damageService = inject(DamageService);
+  private playerService = inject(PlayerService);
 
   combat(attacker: Character, defender: Character) {
     console.log(`${attacker.name} attacks ${defender.name}`);
-
+    if (this.playerService.checkHasActedContains(attacker)) return;
     if (!this.checkRange(attacker, defender)) {
       console.log('Target is out of range!');
       return;
     }
 
     this.damageService.calculateDamage(attacker, defender);
+    this.playerService.characterMove(attacker);
     this.checkIfAlive(attacker, defender);
     this.gameService.checkIfGameOver();
   }

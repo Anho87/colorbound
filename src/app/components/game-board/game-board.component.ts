@@ -4,6 +4,7 @@ import { GameService } from '../../services/game.service';
 import { Player } from '../../models/entities/player/player';
 import { Enemy } from '../../models/entities/enemies/enemy';
 import { CombatService } from '../../services/combat.service';
+import { Character } from '../../models/entities/character';
 
 @Component({
   selector: 'app-game-board',
@@ -19,7 +20,7 @@ export class GameBoardComponent implements OnInit {
   boardWidth = this.gameService.boardWidth();
   boardHeight = this.gameService.boardHeight();
   tiles: [number, number][] = [];
-
+  selectedCharacter?: Player | Enemy;
   playerCharacters = this.gameService.playerCharacters;
   enemyCharacters = this.gameService.enemyCharacters;
 
@@ -32,13 +33,14 @@ export class GameBoardComponent implements OnInit {
   }
 
   onTileClick(coord: [number, number]) {
-    const chars = this.gameService.getCharactersAtCoord(coord);
+    const char = this.gameService.getCharacterAtCoord(coord);
+    this.selectedCharacter = this.gameService.getCharacterAtCoord(coord);
     const selectedPlayer = this.gameService.getSelectedPlayer();
 
-    if (chars.some(c => c instanceof Player)) {
+    if (char instanceof Player) {
       this.gameService.selectPlayerAtCoord(coord);
-    } else if (selectedPlayer && chars.some(c => c instanceof Enemy)) {
-      const enemy = chars.find(c => c instanceof Enemy) as Enemy;
+    } else if (selectedPlayer && char instanceof Enemy) {
+      const enemy = char as Enemy;
       this.combatService.combat(selectedPlayer, enemy);
     } else if (selectedPlayer) {
       this.gameService.moveSelectedPlayerTo(coord);
@@ -49,7 +51,7 @@ export class GameBoardComponent implements OnInit {
     return this.gameService.isSelectedPlayerTileCoord(coord);
   }
 
-  getCharactersAt(coord: [number, number]) {
-    return this.gameService.getCharactersAtCoord(coord);
+  getCharacterAt(coord: [number, number]) {
+    return this.gameService.getCharacterAtCoord(coord);
   }
 }
