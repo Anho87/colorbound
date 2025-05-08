@@ -1,9 +1,9 @@
 # 🎮 Colorbound 
 <p align="center">
   <img src="docs/mage-red.png" width="64" />
-  <img src="docs/mage-blue.png" width="64" />
-  <img src="docs/mage-green.png" width="64" />
-  <img src="docs/mage-yellow.png" width="64" />
+  <img src="docs/warrior-blue.png" width="64" />
+  <img src="docs/monk-green.png" width="64" />
+  <img src="docs/ranger-yellow.png" width="64" />
 </p>
 
 
@@ -93,7 +93,7 @@ Each board has a **biome** that benefits characters depending on their color:
 
 <p align="center">
   <img src="docs/mage-red.png" width="64" />
-  <img src="docs/mage-blue.png" width="64" />
-  <img src="docs/mage-green.png" width="64" />
-  <img src="docs/mage-yellow.png" width="64" />
+  <img src="docs/warrior-blue.png" width="64" />
+  <img src="docs/monk-green.png" width="64" />
+  <img src="docs/ranger-yellow.png" width="64" />
 </p>
