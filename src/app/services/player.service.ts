@@ -1,6 +1,5 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Player } from '../models/entities/player/player';
-import { GameService } from './game.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class PlayerService {
   }
 
   checkHasActedContains(player: Player){
-    return this.hasActed().find(p => p.position === player.position)
+    return this.hasActed().some(p => p.name === player.name);
   }
 
  resetHasActed(){
