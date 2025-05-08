@@ -1,22 +1,24 @@
 <div class="game-grid">
   <div class="info-bar">
-    <h2>Hej</h2>
+    @if (selectedCharacter) {
+      <h4>HP: {{selectedCharacter.hp}} {{selectedCharacter.name }} {{selectedCharacter.weapon}}</h4>
+    }@else {
+      <h4>HP:</h4>
+    }
   </div>
 
-  <div class="board"
-     [style.gridTemplateColumns]="'repeat(' + boardWidth + ', 50px)'"
-     [style.gridTemplateRows]="'repeat(' + boardHeight + ', 50px)'">
+  <div class="board" [style.gridTemplateColumns]="'repeat(' + boardWidth + ', 50px)'"
+    [style.gridTemplateRows]="'repeat(' + boardHeight + ', 50px)'">
+
+    @for (item of tiles; track $index) {
+      <div class="tile"  (click)="onTileClick(item)" [class.selected]="isSelectedTile(item)">
+
+        @if (getCharacterAt(item)) {
+          <img [src]="getCharacterAt(item)!.imageUrl" class="sprite" />
+        }
+      </div>
+    }
   
-  <div class="tile"
-       *ngFor="let coord of tiles"
-       (click)="onTileClick(coord)"
-       [class.selected]="isSelectedTile(coord)">
-       
-    <ng-container *ngFor="let c of getCharactersAt(coord)">
-      <img [src]="c.imageUrl" class="sprite" />
-    </ng-container>
-
   </div>
-</div>
 
 </div>

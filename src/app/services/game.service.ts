@@ -25,32 +25,48 @@ export class GameService {
   playerCharacters = signal<Player[]>([]);
   biome = signal<Biome>(Biome.LavaChamber);
   selectedPlayerIndex = signal<number | null>(null);
+  selectedPlayerCord = signal<[number, number]>([0,0]);
 
   gameStart(){
     this.setBiome();
     this.gameOnGoing = true;
-    while(this.gameOnGoing){
-      this.playerTurn()
-      this.enemyTurn();
+   this.gameLoop();
+  }
+
+  async gameLoop(){
+    while (this.gameOnGoing) {
+      await this.playerTurn();  
+      this.playerService.resetHasActed(); 
+      this.checkIfGameOver()
+      await this.enemyTurn(); 
+      this.checkIfGameOver()
     }
   }
 
-  playerTurn(){
-    const characters = this.playerCharacters();
-    for (let index = 0; index < characters.length; index++) {
-      const character = characters[index];
-      this.playerService.characterMove(character); 
-    }
+  async playerTurn() {
+    console.log('Your turn');
+    await this.waitForAllPlayersToAct(); 
+    console.log('Furn finished');
   }
 
-  enemyTurn(){
+  waitForAllPlayersToAct(): Promise<void> {
+    return new Promise((resolve) => {
+      const interval = setInterval(() => {
+        if (this.playerService.hasActed().length === this.playerCharacters().length) {
+          clearInterval(interval); 
+          console.log('All players have acted');
+          resolve(); 
+        }
+      }, 100); 
+    });
+  }
+
+ async enemyTurn(){
     const characters = this.enemyCharacters();
     for (let index = 0; index < characters.length; index++) {
       const character = characters[index];
       this.aiService.characterMove(character);
     }
-    this.gameOnGoing = false;
-    console.log('game over');
   }
 
   checkIfGameOver(){
@@ -67,11 +83,11 @@ export class GameService {
     return a[0] === b[0] && a[1] === b[1];
   }
 
-  getCharactersAtCoord(coord: [number, number]): (Player | Enemy)[] {
-    return [
-      ...this.playerCharacters().filter(c => this.positionsMatch(c.position, coord)),
-      ...this.enemyCharacters().filter(c => this.positionsMatch(c.position, coord)),
-    ];
+  getCharacterAtCoord(coord: [number, number]): Player | Enemy | undefined {
+    const player = this.playerCharacters().find(p => this.positionsMatch(p.position, coord));
+    if (player) return player;
+  
+    return this.enemyCharacters().find(e => this.positionsMatch(e.position, coord));
   }
 
   getSelectedPlayer(): Player | null {
@@ -84,6 +100,7 @@ export class GameService {
     if (player) {
       const idx = this.playerCharacters().indexOf(player);
       this.selectedPlayerIndex.set(idx);
+      this.selectedPlayerCord.set(coord);
     }
   }
 
@@ -91,13 +108,19 @@ export class GameService {
     const idx = this.selectedPlayerIndex();
     if (idx === null) return;
     if (!this.checkMovement(to)) return;
+    const selectedPlayer = this.getSelectedPlayer();
+    if (selectedPlayer) {
+      if (this.playerService.checkHasActedContains(selectedPlayer)) return;
+    }
 
     const updated = [...this.playerCharacters()];
     updated[idx].position = to;
     this.playerCharacters.set(updated);
+    if (selectedPlayer) {
+      this.playerService.characterMove(selectedPlayer);
+    }
     this.selectedPlayerIndex.set(null);
-    console.log(this.enemyCharacters());
-    console.log(this.playerCharacters());
+    this.selectedPlayerCord.set([0,0]);
   }
   
   checkMovement([targetX, targetY]: [number, number]): boolean {
