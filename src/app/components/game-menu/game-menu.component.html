@@ -1,15 +1,22 @@
-@if (!ifCreatePlayerCharacter) {
-    <button (click)="generateEnemies(3)">Easy</button>
-    <button (click)="generateEnemies(4)">Medium</button>
-    <button (click)="generateEnemies(5)">Hard</button>
-    <button (click)="generatePlayerCharacters()">Choose your party</button>
-    <button (click)="onStartGame()">Start Game</button>
-}
-
-@if(ifCreatePlayerCharacter){
-    <app-character-creation (closeCharacterCreation)="generatePlayerCharacters()"></app-character-creation>
-}
-
-
-
-
+<div class="container">
+    @if (!ifCreatePlayerCharacter) {
+        <div class="button-bar">
+            <div class="dropdown">
+                <button class="dropdown-toggle" (click)="toggleDropdown()">Difficulty</button>
+                @if (isOpen) {
+                    <ul class="dropdown-menu">
+                        <li (click)="generateEnemies(3)">Easy</li>
+                        <li (click)="generateEnemies(4)">Medium</li>
+                        <li (click)="generateEnemies(5)">Hard</li>
+                    </ul>
+                }
+            </div>
+            <button class="button" (click)="generatePlayerCharacters()">Choose your party</button>
+            <button class="button" (click)="onStartGame()">Start Game</button>
+        </div>
+    }
+    
+    @if(ifCreatePlayerCharacter){
+        <app-character-creation (closeCharacterCreation)="generatePlayerCharacters()"></app-character-creation>
+    }
+</div>
