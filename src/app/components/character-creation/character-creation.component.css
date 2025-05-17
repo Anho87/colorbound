@@ -1,0 +1,103 @@
+.create-character-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: coral;
+  padding: 20px;
+}
+
+.create-character-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid coral;
+  border-radius: 12px;
+  padding: 24px;
+  background-color: #fffaf5;
+  box-shadow: 0 0 10px rgba(255, 127, 80, 0.3);
+}
+
+.create-character-form h2 {
+  text-align: center;
+  color: coral;
+  margin-bottom: 16px;
+}
+
+.character-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed coral;
+}
+
+.character-row strong {
+  width: 100%;
+  color: coral;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.character-row label {
+  font-weight: bold;
+  color: coral;
+  white-space: nowrap;
+}
+
+.character-row select {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid coral;
+  font-size: 14px;
+  min-width: 120px;
+}
+
+.character-row select:focus {
+  outline: none;
+  border-color: chocolate;
+  box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
+}
+
+.create-character-form button[type="submit"] {
+  background-color: coral;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 16px;
+}
+
+.create-character-form button[type="submit"]:hover {
+  background-color: chocolate;
+  transform: scale(1.05);
+}
+
+.create-character-form button[type="submit"]:active {
+  background-color: chocolate;
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .character-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .character-row label,
+  .character-row select {
+    width: 100%;
+  }
+
+  .character-row select {
+    min-width: unset;
+  }
+}

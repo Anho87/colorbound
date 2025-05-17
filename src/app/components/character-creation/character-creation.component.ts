@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface CharacterForm {
+  id: number;
   color: Color;
   archetype: Archetype;
   weapon: string;
@@ -31,11 +32,11 @@ export class CharacterCreationComponent {
   colors = Object.values(Color);
   archetypes = Object.values(Archetype);
 
-  characterForms: CharacterForm[] = [
-    { color: Color.Red, archetype: Archetype.Warrior, weapon: '', weapons: [] },
-    { color: Color.Blue, archetype: Archetype.Mage, weapon: '', weapons: [] },
-    { color: Color.Green, archetype: Archetype.Ranger, weapon: '', weapons: [] },
-  ];
+characterForms: CharacterForm[] = [
+  { id: 1, color: Color.Red, archetype: Archetype.Warrior, weapon: '', weapons: [] },
+  { id: 2, color: Color.Blue, archetype: Archetype.Mage, weapon: '', weapons: [] },
+  { id: 3, color: Color.Green, archetype: Archetype.Ranger, weapon: '', weapons: [] },
+];
 
   constructor() {
     this.characterForms.forEach((_, i) => this.updateWeapons(i));
@@ -66,8 +67,8 @@ export class CharacterCreationComponent {
 
   createAllCharacters() {
     this.gameService.playerCharacters.set([]);
-    const boardWidth = 10;
-    const boardHeight = 10;
+    const boardWidth = this.gameService.boardWidth();
+    const boardHeight = this.gameService.boardHeight();
     
     for (let i = 0; i < this.characterForms.length; i++) {
       const form = this.characterForms[i];
@@ -79,11 +80,17 @@ export class CharacterCreationComponent {
       this.gameService.playerCharacters.update((list) => [...list, newCharacter]);
     }
     console.log(this.gameService.playerCharacters());
+    this.closeCharacterCreation.emit();
   }
 
   createName(form: CharacterForm): string {
     return `Player ${form.color} ${form.archetype} ${this.gameService.playerCharacters().length + 1}`;
   }
+
+  trackByValue(index: number, value: string): string {
+  return value;
+}
+
 
   onCloseCharacterCreation(){
     this.closeCharacterCreation.emit();

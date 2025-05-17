@@ -64,8 +64,8 @@ The game auto-generates 3-5 enemy characters depending on how hard the player wa
 #### Ranger:
 - Bow > Crossbow  
 - Crossbow > Throwing Knife  
-- Throwing Knife > Sling  
-- Sling > Bow
+- Throwing Knife > Sling Shot 
+- Sling Shot > Bow
 
 #### Monk:
 - Staff > Fists  

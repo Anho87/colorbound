@@ -8,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class WelcomeComponent {
   @Output() playClicked = new EventEmitter();
+  
   onPlay() {
     this.playClicked.emit();
   }

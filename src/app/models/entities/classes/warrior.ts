@@ -15,9 +15,10 @@ export class Warrior extends Character {
     hp: number = 100,
     position: [number, number] = [0, 0],
     range: number = 1,
-      imageUrl: string = ''
+    imageUrl: string = '',
+    weaponImageUrl: string = '',
   ) {
-    super(name, color, weapon, hp, position, range, imageUrl);
+    super(name, color, weapon, hp, position, range, imageUrl, weaponImageUrl);
     this.weapon = weapon;
   }
  
@@ -25,10 +26,11 @@ export class Warrior extends Character {
     return `${this.name} swings their ${this.weapon.toUpperCase()} with brute force!`;
   }
 
-  static getDefaults(color: Color) {
+  static getDefaults(color: Color, weapon: string) {
     return {
       range: 1,
       imageUrl: `assets/sprites/warrior-${color.toLowerCase()}.png`,
+      weaponImageUrl: `assets/sprites/warrior-${weapon.toLowerCase()}.png`,
     };
   }
 }

@@ -14,9 +14,10 @@ export class Mage extends Character {
     hp: number = 100,
     position: [number, number] = [0, 0],
     range: number = 2,
-    imageUrl: string = ''
+    imageUrl: string = '',
+    weaponImageUrl: string = '',
   ) {
-    super(name, color, weapon, hp, position, range, imageUrl);
+    super(name, color, weapon, hp, position, range, imageUrl,weaponImageUrl);
     this.weapon = weapon;
   }
 
@@ -24,10 +25,11 @@ export class Mage extends Character {
     return `${this.name} casts ${this.weapon.toUpperCase()} magic!`;
   }
 
-  static getDefaults(color: Color) {
+  static getDefaults(color: Color, weapon: string) {
     return {
       range: 2,
       imageUrl: `assets/sprites/mage-${color.toLowerCase()}.png`,
+      weaponImageUrl: `assets/sprites/mage-${weapon.toLowerCase()}.png`,
     };
   }
 }

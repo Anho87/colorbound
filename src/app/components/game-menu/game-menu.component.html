@@ -1,22 +1,43 @@
 <div class="container">
-    @if (!ifCreatePlayerCharacter) {
-        <div class="button-bar">
-            <div class="dropdown">
-                <button class="dropdown-toggle" (click)="toggleDropdown()">Difficulty</button>
-                @if (isOpen) {
-                    <ul class="dropdown-menu">
-                        <li (click)="generateEnemies(3)">Easy</li>
-                        <li (click)="generateEnemies(4)">Medium</li>
-                        <li (click)="generateEnemies(5)">Hard</li>
-                    </ul>
-                }
-            </div>
-            <button class="button" (click)="generatePlayerCharacters()">Choose your party</button>
-            <button class="button" (click)="onStartGame()">Start Game</button>
+
+    <div class="button-bar">
+        <div class="dropdown">
+            <button class="dropdown-toggle" (click)="toggleDropdown()">Difficulty</button>
+            @if (isOpen) {
+            <ul class="dropdown-menu">
+                <li (click)="generateEnemies(3)">Easy</li>
+                <li (click)="generateEnemies(4)">Medium</li>
+                <li (click)="generateEnemies(5)">Hard</li>
+            </ul>
+            }
         </div>
-    }
-    
+        <button class="button" (click)="generatePlayerCharacters()">Choose your party</button>
+        <button class="button" (click)="onStartGame()">Start Game</button>
+    </div>
+
+    <h2>Enemies!</h2>
+    <div class="enemy-characters">
+        @for (enemyCharacter of enemyCharacters(); track enemyCharacter) {
+        <div class="enemy-container">
+            <img class="sprite" [src]="enemyCharacter.imageUrl" alt="Character Image">
+            <img class="weapon" [src]="enemyCharacter.weaponImageUrl" alt="Weapon Image">
+        </div>
+        }
+    </div>
+    <h2>Your characters!</h2>
+    <div class="player-characters">
+        @if (playerCharacters().length > 0) {
+        @for (playerCharacter of playerCharacters(); track playerCharacter) {
+        <div class="player-container">
+            <img class="sprite" [src]="playerCharacter.imageUrl">
+            <img class="weapon" [src]="playerCharacter.weaponImageUrl">
+        </div>
+        }
+        }@else {
+        <h6>Choose your characters</h6>
+        }
+    </div>
     @if(ifCreatePlayerCharacter){
-        <app-character-creation (closeCharacterCreation)="generatePlayerCharacters()"></app-character-creation>
+    <app-character-creation (closeCharacterCreation)="generatePlayerCharacters()"></app-character-creation>
     }
 </div>

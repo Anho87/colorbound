@@ -16,23 +16,23 @@ export class Enemy extends Character {
     archetype: Archetype,
     position: [number, number] = [0, 0]
   ) {
-    const { range, imageUrl } = Enemy.getDefaultsFromArchetype(archetype, color);
-    super(name, color, weapon, 100, position, range, imageUrl);
+    const { range, imageUrl, weaponImageUrl } = Enemy.getDefaultsFromArchetype(archetype, color, weapon);
+    super(name, color, weapon, 100, position, range, imageUrl, weaponImageUrl);
     this.archetype = archetype;
   }
 
-  static getDefaultsFromArchetype(archetype: Archetype, color: Color) {
+  static getDefaultsFromArchetype(archetype: Archetype, color: Color, weapon: string) {
     switch (archetype) {
       case Archetype.Mage:
-        return Mage.getDefaults(color);
+        return Mage.getDefaults(color,weapon);
       case Archetype.Warrior:
-        return Warrior.getDefaults(color);
+        return Warrior.getDefaults(color,weapon);
       case Archetype.Ranger:
-        return Ranger.getDefaults(color);
+        return Ranger.getDefaults(color,weapon);
       case Archetype.Monk:
-        return Monk.getDefaults(color);
+        return Monk.getDefaults(color,weapon);
       default:
-        return { range: 1, imageUrl: 'assets/sprites/default.png' };
+        return { range: 1, imageUrl: 'assets/sprites/default.png', weaponImageUrl: 'assets/sprites/warrior-sword.png'};
     }
   }
 

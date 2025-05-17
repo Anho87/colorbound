@@ -1,33 +1,34 @@
-<div class="create-character">
-  <h2>Create 3 Characters</h2>
+<div class="create-character-container">
+  <form class="create-character-form" (ngSubmit)="createAllCharacters()" #createCharacterForm="ngForm">
+    <h2>Create 3 Characters</h2>
 
-  <div *ngFor="let form of characterForms; let i = index" class="character-form">
-    <h3>Character {{ i + 1 }}</h3>
+    @for (form of characterForms; track form.id; let i = $index) {
+      <div class="character-row">
+        <strong>Character {{i + 1}}:</strong>
 
-    <label>
-      Color:
-      <select [(ngModel)]="form.color">
-        <option *ngFor="let c of colors" [value]="c">{{ c }}</option>
-      </select>
-    </label>
+        <label for="color-{{form.id}}">Color:</label>
+        <select id="color-{{form.id}}" [(ngModel)]="form.color" name="color-{{form.id}}">
+          @for (c of colors; track c) {
+            <option [value]="c">{{c}}</option>
+          }
+        </select>
 
-    <label>
-      Archetype:
-      <select [(ngModel)]="form.archetype" (change)="updateWeapons(i)">
-        <option *ngFor="let a of archetypes" [value]="a">{{ a }}</option>
-      </select>
-    </label>
+        <label for="archetype-{{form.id}}">Archetype:</label>
+        <select id="archetype-{{form.id}}" [(ngModel)]="form.archetype" name="archetype-{{form.id}}" (ngModelChange)="updateWeapons(i)">
+          @for (a of archetypes; track a) {
+            <option [value]="a">{{a}}</option>
+          }
+        </select>
 
-    <label>
-      Weapon:
-      <select [(ngModel)]="form.weapon">
-        <option *ngFor="let w of form.weapons" [value]="w">{{ w }}</option>
-      </select>
-    </label>
-  </div>
+        <label for="weapon-{{form.id}}">Weapon:</label>
+        <select id="weapon-{{form.id}}" [(ngModel)]="form.weapon" name="weapon-{{form.id}}">
+         @for (w of form.weapons; track trackByValue($index, w)) {
+            <option [value]="w">{{w}}</option>
+          }
+        </select>
+      </div>
+    }
 
-  <button (click)="createAllCharacters()">Create</button>
-  <button (click)="onCloseCharacterCreation()">Close</button>
+    <button type="submit">Create</button>
+  </form>
 </div>
-
-  

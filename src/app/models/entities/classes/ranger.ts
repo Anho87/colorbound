@@ -14,9 +14,10 @@ export class Ranger extends Character {
     hp: number = 100,
     position: [number, number] = [0, 0],
     range: number = 2,
-    imageUrl: string = ''
+    imageUrl: string = '',
+    weaponImageUrl: string = '',
   ) {
-    super(name, color, weapon, hp, position, range, imageUrl);
+    super(name, color, weapon, hp, position, range, imageUrl,weaponImageUrl);
     this.weapon = weapon;
   }
 
@@ -26,10 +27,11 @@ export class Ranger extends Character {
     } attacks from afar with a ${this.weapon.toUpperCase()}!`;
   }
 
-  static getDefaults(color: Color) {
+  static getDefaults(color: Color, weapon: string) {
     return {
       range: 2,
       imageUrl: `assets/sprites/ranger-${color.toLowerCase()}.png`,
+      weaponImageUrl: `assets/sprites/ranger-${weapon.toLowerCase()}.png`,
     };
   }
 }

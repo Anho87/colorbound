@@ -11,6 +11,7 @@ export abstract class Character {
     public position: [number, number],
     public range: number = 1,
     public imageUrl: string = '',
+    public weaponImageUrl: string = '',
   ) {}
 
   abstract archetype: Archetype;

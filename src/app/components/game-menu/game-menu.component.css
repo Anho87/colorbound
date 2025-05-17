@@ -1,17 +1,10 @@
-option {
-  background-color: #fff;
-}
-select {
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  box-sizing: border-box;
-}
-
-@media (max-width: 550px) {
-  select {
-    width: 100%;
-  }
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: coral;
 }
 
 .dropdown {
@@ -20,7 +13,7 @@ select {
 }
 
 .dropdown-toggle, .button {
-  background-color:coral;
+  background-color: coral;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -41,9 +34,10 @@ select {
 }
 
 .dropdown-menu {
-  display: block !important; 
+  display: block !important;
   position: absolute;
-  background-color: white;
+  background-color: coral;
+  color: white;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 0;
@@ -58,5 +52,82 @@ select {
 }
 
 .dropdown-menu li:hover {
-  background-color: #f1f1f1;
+  background-color: chocolate;
+}
+
+.enemy-characters, .player-characters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+  padding: 10px;
+}
+
+.enemy-container, .player-container {
+  position: relative;
+  width: 100px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+
+.sprite {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.weapon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 35%;
+  height: auto;
+  z-index: 2;
+}
+
+@media (max-width: 1200px) {
+  .enemy-container, .player-container {
+    width: 90px;
+  }
+}
+
+@media (max-width: 992px) {
+  .enemy-container, .player-container {
+    width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .enemy-container, .player-container {
+    width: 110px;
+  }
+}
+
+@media (max-width: 576px) {
+  .enemy-container, .player-container {
+    width: 120px;
+  }
+
+  .weapon {
+    width: 45%;
+  }
+}
+
+@media (max-width: 550px) {
+  .dropdown, .dropdown-toggle, .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .enemy-container, .player-container {
+    width: 130px;
+  }
+
+  .weapon {
+    width: 50%;
+  }
 }

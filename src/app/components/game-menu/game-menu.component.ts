@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { Component, computed, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { CharacterCreationComponent } from '../character-creation/character-creation.component';
 
@@ -12,6 +12,8 @@ import { CharacterCreationComponent } from '../character-creation/character-crea
 export class GameMenuComponent implements OnInit {
   @Output() startGame = new EventEmitter();
   private gameService = inject(GameService);
+  enemyCharacters = computed(() => this.gameService.enemyCharacters());
+  playerCharacters = computed(() => this.gameService.playerCharacters());
   ifCreatePlayerCharacter: boolean = false;
   isOpen = false;
 
