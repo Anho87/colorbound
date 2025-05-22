@@ -1,3 +1,5 @@
+Still a work in progress, but the current version can be demoed at [https://ah-colorbound.web.app/](https://ah-colorbound.web.app/)
+
 # 🎮 Colorbound 
 <p align="center">
   <img src="docs/mage-red.png" width="64" />
